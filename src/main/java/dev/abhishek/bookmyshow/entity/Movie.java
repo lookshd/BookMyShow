@@ -1,13 +1,17 @@
 package dev.abhishek.bookmyshow.entity;
 
 import dev.abhishek.bookmyshow.entity.constants.Feature;
+import jakarta.persistence.*;
 
 import java.util.List;
 
+@Entity
 public class Movie extends BaseModel {
     private String movieName;
     private String genre;
     private int durationInMinutes;
+    @Enumerated(EnumType.ORDINAL)
+    @ElementCollection
     private List<Feature> features;
 
     public int getDurationInMinutes() {

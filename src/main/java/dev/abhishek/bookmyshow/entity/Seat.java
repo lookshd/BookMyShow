@@ -1,10 +1,15 @@
 package dev.abhishek.bookmyshow.entity;
 
 import dev.abhishek.bookmyshow.entity.constants.SeatType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
+@Entity
 public class Seat extends BaseModel{
     private  int row;
     private  int column;
+    @Enumerated(EnumType.ORDINAL)
     private SeatType seatType;
 
     public int getColumn() {
@@ -31,3 +36,4 @@ public class Seat extends BaseModel{
         this.seatType = seatType;
     }
 }
+

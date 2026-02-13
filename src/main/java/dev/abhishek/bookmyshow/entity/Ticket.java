@@ -1,14 +1,20 @@
 package dev.abhishek.bookmyshow.entity;
 
 import dev.abhishek.bookmyshow.entity.constants.TicketStatus;
+import jakarta.persistence.*;
 
 import java.util.List;
 
+@Entity
 public class Ticket extends  BaseModel{
+    @OneToOne
     private  Payment payment;
     private List<ShowSeat> showSeat;
+    @ManyToOne
     private Show show;
+    @ManyToOne
     private User user;
+    @Enumerated(EnumType.ORDINAL)
     private TicketStatus ticketStatus;
 
     public Payment getPayment() {

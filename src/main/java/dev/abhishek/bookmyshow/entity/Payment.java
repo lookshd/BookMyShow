@@ -1,11 +1,18 @@
 package dev.abhishek.bookmyshow.entity;
 
 import dev.abhishek.bookmyshow.entity.constants.PaymentStatus;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
 
 import java.util.List;
 
+@Entity
 public class Payment extends BaseModel{
+    @OneToMany
     private List<Transaction> transactions;
+    @Enumerated(EnumType.ORDINAL)
     private PaymentStatus paymentStatus;
     private int totalAmount;
 

@@ -3,10 +3,16 @@ package dev.abhishek.bookmyshow.entity;
 import dev.abhishek.bookmyshow.entity.constants.PaymentStatus;
 import dev.abhishek.bookmyshow.entity.constants.PaymentType;
 import dev.abhishek.bookmyshow.entity.constants.TransactionPaymentStatus;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
+@Entity
 public class Transaction extends BaseModel{
     private String refrenceId;
+    @Enumerated(EnumType.ORDINAL)
     private TransactionPaymentStatus transactionPaymentStatus;
+    @Enumerated(EnumType.ORDINAL)
     private PaymentType paymentType;
     private int TransactionAmount;
 
