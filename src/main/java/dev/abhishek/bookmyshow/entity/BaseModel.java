@@ -1,24 +1,31 @@
 package dev.abhishek.bookmyshow.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
+
+@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 public abstract class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int updatedAt;
-    private int createdAt;
+    @CreatedDate
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private LocalDateTime updatedAt;
+    @LastModifiedDate
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private LocalDateTime createdAt;
     private String seatNumber;
 
-    public int getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(int createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -30,11 +37,11 @@ public abstract class BaseModel {
         this.id = id;
     }
 
-    public int getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(int updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 

@@ -9,10 +9,13 @@ import java.util.List;
 public class Auditorium extends BaseModel{
     private  String auditoriumName;
     @OneToMany
+    @JoinColumn(name = "auditorium_id")
     private  List<Seat> seats;
     @Enumerated(EnumType.ORDINAL)
     @ElementCollection
     private List<Feature> features;
+    @ManyToOne
+    private Theatre theatre;
 
     public String getAuditoriumName() {
         return auditoriumName;
@@ -36,5 +39,13 @@ public class Auditorium extends BaseModel{
 
     public void setSeats(List<Seat> seats) {
         this.seats = seats;
+    }
+
+    public Theatre getTheatre() {
+        return theatre;
+    }
+
+    public void setTheatre(Theatre theatre) {
+        this.theatre = theatre;
     }
 }

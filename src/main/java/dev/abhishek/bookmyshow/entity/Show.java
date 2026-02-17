@@ -15,10 +15,12 @@ public class Show extends BaseModel{
     @ManyToOne
     private Auditorium auditorium;
     @OneToMany
+    @JoinColumn(name = "show_id")
     private  List<ShowSeat> showSeats;
     @Enumerated(EnumType.ORDINAL)
     @ElementCollection
     private List<Feature> features;
+
 
     public Auditorium getAuditorium() {
         return auditorium;
