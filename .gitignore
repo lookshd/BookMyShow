@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local Configuration ###
+# Local environment-specific properties with sensitive data
+src/main/resources/application-local.properties
+application-local.properties

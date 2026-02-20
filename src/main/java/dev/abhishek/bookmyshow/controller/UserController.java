@@ -7,9 +7,8 @@ import dev.abhishek.bookmyshow.mapper.UserDTOMapper;
 import dev.abhishek.bookmyshow.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -24,6 +23,13 @@ public class UserController {
         User savedUser = userService.createUser(reqUser);
         CreateUserRespDTO respUser = UserDTOMapper.getCreateUserRespDTO(savedUser);
         return ResponseEntity.ok(respUser);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers()
+    {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
     }
 
 }

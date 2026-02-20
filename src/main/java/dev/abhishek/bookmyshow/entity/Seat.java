@@ -10,7 +10,7 @@ public class Seat extends BaseModel{
     private  int row;
     private  int column;
     @Enumerated(EnumType.ORDINAL)
-    private SeatType seatType;
+    private SeatType  seatType;
 
     public int getColumn() {
         return column;
