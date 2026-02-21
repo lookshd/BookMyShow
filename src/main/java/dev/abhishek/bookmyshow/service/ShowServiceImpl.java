@@ -5,10 +5,30 @@ import dev.abhishek.bookmyshow.repository.ShowRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class ShowServiceImpl {
+public class ShowServiceImpl implements ShowService {
     @Autowired
     private ShowRepo showRepo;
-    public Show getShowById(Integer showId){
-    return showRepo.findById(showId).get();}
+
+    @Override
+    public Show getShowById(Integer showId) {
+        return showRepo.findById(showId).get();
+    }
+
+    @Override
+    public List<Show> getAllShows() {
+        return showRepo.findAll();
+    }
+
+    @Override
+    public void saveShow(Show show) {
+        showRepo.save(show);
+    }
+
+    @Override
+    public void deleteShowById(Integer showId) {
+        showRepo.deleteById(showId);
+    }
 }
