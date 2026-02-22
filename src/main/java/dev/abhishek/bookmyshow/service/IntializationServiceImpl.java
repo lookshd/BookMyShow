@@ -5,6 +5,7 @@ import dev.abhishek.bookmyshow.entity.constants.SeatType;
 import dev.abhishek.bookmyshow.entity.constants.ShowSeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class IntializationServiceImpl implements IntializationService {
     }
 
     @Override
+    @Transactional
     public void demoDataIntialization(){
         //city add
         City Delhi = createCity();
@@ -81,8 +83,9 @@ public class IntializationServiceImpl implements IntializationService {
       {
           Theatre theatre = new Theatre();
           theatre.setTheatreName(theatreNames[i]);
-            theatre.setAddress(theatreAddress[i]);
-            theatres.add(theatreService.saveTheatre(theatre));
+          theatre.setAddress(theatreAddress[i]);
+          theatre.setCity(city);
+          theatres.add(theatreService.saveTheatre(theatre));
       }
         city.setTheatres(theatres);
         cityService.saveCity(city);
@@ -97,6 +100,7 @@ public class IntializationServiceImpl implements IntializationService {
         {
             Auditorium auditorium = new Auditorium();
             auditorium.setAuditoriumName(auditoriumNames[i]);
+            auditorium.setTheatre(theatre);
             Auditorium savedAuditorium = auditoriumService.saveAuditorium(auditorium);
             createSeats(savedAuditorium);
             auditoriums.add(savedAuditorium);
@@ -154,6 +158,46 @@ public class IntializationServiceImpl implements IntializationService {
                 140, 135, 125, 145, 148,
                 146, 156, 142, 122, 138
             };
+            String[] releaseDates = {
+                "2024-02-23", "2024-01-25", "2024-03-08", "2024-03-29", "2024-09-13",
+                "2023-09-07", "2023-12-25", "2023-01-25", "2022-11-18", "2023-12-01",
+                "2023-09-22", "2024-01-12", "2024-08-16", "2024-04-19", "2024-07-12",
+                "2024-11-01", "2024-10-12", "2024-03-22", "2024-02-02", "2024-05-10"
+            };
+            String[] aboutDescriptions = {
+                "A gripping political drama about a landmark constitutional article",
+                "An action-packed thriller featuring aerial combat and intense sequences",
+                "A comedy film with witty dialogues and entertaining performances",
+                "A comedy film about a group of friends embarking on an adventure",
+                "A light-hearted comedy exploring friendship and life's simple pleasures",
+                "An action thriller with stunning action sequences and emotional depth",
+                "A heartwarming comedy-drama about family and relationships",
+                "A high-octane action spy thriller with international intrigue",
+                "A gripping psychological thriller full of suspense and twists",
+                "An intense action-drama exploring the dark side of ambition",
+                "A hilarious comedy sequel with slapstick humor and witty jokes",
+                "A fascinating documentary about space exploration and discovery",
+                "A thrilling supernatural drama with horror and suspenseful elements",
+                "An action-comedy featuring larger-than-life characters and fun sequences",
+                "An emotional drama about perseverance and the human spirit",
+                "A hilarious horror-comedy that blends scares with laughter",
+                "An action-packed thriller with stunning fight choreography",
+                "A suspenseful thriller with mind-bending plot twists",
+                "A feel-good comedy-drama celebrating diversity and acceptance",
+                "A romantic drama exploring the power of love and connection"
+            };
+            String[] ratings = {
+                "8.2/10", "8.5/10", "7.8/10", "7.5/10", "7.9/10",
+                "8.7/10", "8.1/10", "8.4/10", "8.3/10", "8.9/10",
+                "7.6/10", "8.0/10", "7.7/10", "7.4/10", "7.3/10",
+                "8.6/10", "8.2/10", "7.9/10", "8.1/10", "7.8/10"
+            };
+            String[] votes = {
+                "45230", "52180", "38920", "41670", "39450",
+                "68920", "44780", "59300", "52140", "71340",
+                "42560", "28960", "35670", "31240", "29870",
+                "58340", "48210", "40120", "46890", "33540"
+            };
 
             List<Movie> movies = new ArrayList<>();
             for (int i = 0; i < movieNames.length; i++) {
@@ -161,6 +205,10 @@ public class IntializationServiceImpl implements IntializationService {
                 movie.setMovieName(movieNames[i]);
                 movie.setGenre(genres[i]);
                 movie.setDurationInMinutes(durations[i]);
+                movie.setReleaseDate(releaseDates[i]);
+                movie.setAbout(aboutDescriptions[i]);
+                movie.setRating(ratings[i]);
+                movie.setVotes(votes[i]);
                 movies.add(movieService.saveMovie(movie));
             }
             return movies;

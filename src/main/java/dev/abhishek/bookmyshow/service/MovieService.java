@@ -9,5 +9,6 @@ public interface MovieService {
     public List<Movie> getAllMovies();
     public Movie saveMovie(Movie movie);
     public void deleteMovieById(Integer movieId);
+    public List<Movie> getMoviesByCity(String city);
 }
 

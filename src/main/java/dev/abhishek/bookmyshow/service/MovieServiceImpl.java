@@ -23,6 +23,11 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public List<Movie> getMoviesByCity(String city) {
+        System.out.println("city" + city);
+        return movieRepo.findMoviesByCity(city);
+    }
+    @Override
     public Movie saveMovie(Movie movie) {
         return movieRepo.save(movie);
     }

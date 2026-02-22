@@ -1,7 +1,6 @@
 package dev.abhishek.bookmyshow.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
@@ -9,8 +8,7 @@ import java.util.List;
 @Entity
 public class City extends BaseModel{
     private String cityName;
-    @OneToMany
-    @JoinColumn(name = "city_id")
+    @OneToMany(mappedBy = "city")
     private List<Theatre> theatres;
 
     public String getCityName() {
