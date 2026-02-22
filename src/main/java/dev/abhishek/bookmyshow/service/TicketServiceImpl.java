@@ -9,11 +9,13 @@ import dev.abhishek.bookmyshow.entity.constants.TicketStatus;
 import dev.abhishek.bookmyshow.exception.InvalidShowSeatException;
 import dev.abhishek.bookmyshow.repository.TicketRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class TicketServiceImpl implements TicketService{
 
     @Autowired

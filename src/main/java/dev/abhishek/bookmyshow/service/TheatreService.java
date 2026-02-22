@@ -7,7 +7,7 @@ import java.util.List;
 public interface TheatreService {
     public Theatre getTheatreById(Integer theatreId);
     public List<Theatre> getAllTheatres();
-    public void saveTheatre(Theatre theatre);
+    public Theatre saveTheatre(Theatre theatre);
     public void deleteTheatreById(Integer theatreId);
 }
 

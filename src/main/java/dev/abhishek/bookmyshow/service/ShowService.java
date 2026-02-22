@@ -7,6 +7,6 @@ import java.util.List;
 public interface ShowService {
     public Show getShowById(Integer showId);
     public List<Show> getAllShows();
-    public void  saveShow(Show show);
+    public Show  saveShow(Show show);
     public void deleteShowById(Integer showId);
 }

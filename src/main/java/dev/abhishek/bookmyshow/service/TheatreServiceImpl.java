@@ -23,8 +23,8 @@ public class TheatreServiceImpl implements TheatreService {
     }
 
     @Override
-    public void saveTheatre(Theatre theatre) {
-        theatreRepo.save(theatre);
+    public Theatre saveTheatre(Theatre theatre) {
+        return theatreRepo.save(theatre);
     }
 
     @Override

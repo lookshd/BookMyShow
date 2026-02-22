@@ -32,4 +32,9 @@ public class UserServiceImpl implements  UserService {
         System.out.println("============================");
         return users;
     }
+
+    @Override
+    public User save(User user) {
+        return userRepo.save(user);
+    }
 }

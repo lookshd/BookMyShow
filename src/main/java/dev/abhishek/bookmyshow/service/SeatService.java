@@ -7,7 +7,7 @@ import java.util.List;
 public interface SeatService {
     public Seat getSeatById(Integer seatId);
     public List<Seat> getAllSeats();
-    public void saveSeat(Seat seat);
+    public Seat saveSeat(Seat seat);
     public void deleteSeatById(Integer seatId);
 }
 

@@ -23,8 +23,8 @@ public class SeatServiceImpl implements SeatService {
     }
 
     @Override
-    public void saveSeat(Seat seat) {
-        seatRepo.save(seat);
+    public Seat saveSeat(Seat seat) {
+         return    seatRepo.save(seat);
     }
 
     @Override

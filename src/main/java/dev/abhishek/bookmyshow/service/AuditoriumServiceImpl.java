@@ -23,8 +23,8 @@ public class AuditoriumServiceImpl implements AuditoriumService {
     }
 
     @Override
-    public void saveAuditorium(Auditorium auditorium) {
-        auditoriumRepo.save(auditorium);
+    public Auditorium saveAuditorium(Auditorium auditorium) {
+      return     auditoriumRepo.save(auditorium);
     }
 
     @Override

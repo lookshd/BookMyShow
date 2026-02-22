@@ -7,7 +7,7 @@ import java.util.List;
 public interface AuditoriumService {
     public Auditorium getAuditoriumById(Integer auditoriumId);
     public List<Auditorium> getAllAuditoriums();
-    public void saveAuditorium(Auditorium auditorium);
+    public Auditorium saveAuditorium(Auditorium auditorium);
     public void deleteAuditoriumById(Integer auditoriumId);
 }
 

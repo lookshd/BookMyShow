@@ -7,7 +7,7 @@ import java.util.List;
 public interface MovieService {
     public Movie getMovieById(Integer movieId);
     public List<Movie> getAllMovies();
-    public void saveMovie(Movie movie);
+    public Movie saveMovie(Movie movie);
     public void deleteMovieById(Integer movieId);
 }
 
